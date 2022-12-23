@@ -16,6 +16,6 @@ class FormatCommand extends Command {
   @override
   void run() {
     MelosHelper.run('melos run format');
-    StatusHelper.success('gits format');
+    StatusHelper.success('gits_cli format');
   }
 }

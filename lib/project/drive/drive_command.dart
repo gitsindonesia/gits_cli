@@ -40,7 +40,7 @@ class DriveCommand extends Command {
 
     if (argUseApp.isEmpty) {
       MelosHelper.format();
-      'gits l10n --gits-yaml "$argGitsYaml"'.run;
+      'gits_cli l10n --gits-yaml "$argGitsYaml"'.run;
     }
 
     final flavor = FlavorHelper.byFlavor(argFlavor, argGitsYaml);

@@ -17,6 +17,6 @@ class TestCommand extends Command {
   @override
   void run() {
     MelosHelper.run('melos run test');
-    StatusHelper.success('gits test');
+    StatusHelper.success('gits_cli test');
   }
 }

@@ -7,7 +7,7 @@ abstract class YamlHelper {
   static void validateGitsYaml([String? gitsYaml]) {
     if (!exists(join(current, 'gits.yaml')) && gitsYaml == null) {
       StatusHelper.failed(
-          'You don\'t have "gits.yaml" in root apps, make sure to "gits init" first');
+          'You don\'t have "gits.yaml" in root apps, make sure to "gits_cli init" first');
     } else if (gitsYaml != null && !exists(gitsYaml)) {
       StatusHelper.failed('Not found custom path gits.yaml in "$gitsYaml"');
     }

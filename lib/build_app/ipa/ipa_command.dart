@@ -41,7 +41,7 @@ class IpaCommand extends Command {
 
     YamlHelper.validateGitsYaml(argGitsYaml);
 
-    'gits l10n --gits-yaml "$argGitsYaml"'.run;
+    'gits_cli l10n --gits-yaml "$argGitsYaml"'.run;
 
     final flavor = FlavorHelper.byFlavor(argFlavor, argGitsYaml);
 

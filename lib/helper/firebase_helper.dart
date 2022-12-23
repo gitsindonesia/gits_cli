@@ -3,7 +3,7 @@ import 'package:gits_cli/helper/helper.dart';
 
 abstract class FirebaseHelper {
   static void run(String flavor, String pathGitsYaml) {
-    'gits firebase -f $flavor --gits-yaml "$pathGitsYaml"'.run;
+    'gits_cli firebase -f $flavor --gits-yaml "$pathGitsYaml"'.run;
   }
 
   static Map<dynamic, dynamic> getFirebaseConfig(String pathGitsYaml) {

@@ -16,6 +16,6 @@ class AnalyzeCommand extends Command {
   @override
   void run() {
     MelosHelper.run('melos run analyze');
-    StatusHelper.success('gits analyze');
+    StatusHelper.success('gits_cli analyze');
   }
 }

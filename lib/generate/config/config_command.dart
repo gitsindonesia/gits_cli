@@ -211,6 +211,6 @@ class ConfigCommand extends Command {
     StatusHelper.generated(join(current, '.vscode', 'launch.json'));
     StatusHelper.generated(join(current, '.vscode', 'tasks.json'));
 
-    StatusHelper.success('gits config');
+    StatusHelper.success('gits_cli config');
   }
 }

@@ -34,6 +34,6 @@ class CleanCommand extends Command {
 
     MelosHelper.run('melos run clean:all');
 
-    StatusHelper.success('gits clean');
+    StatusHelper.success('gits_cli clean');
   }
 }

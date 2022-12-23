@@ -52,7 +52,7 @@ class TestDriveCommand extends Command {
     final useApp = isOnIos ? ipa : apk;
 
     for (var element in scenario) {
-      'gits drive -t "$target" -a "$useApp" -d "$element" $screenshot'.run;
+      'gits_cli drive -t "$target" -a "$useApp" -d "$element" $screenshot'.run;
     }
 
     StatusHelper.success('test-drive');

@@ -23,8 +23,8 @@ class GetCommand extends Command {
 
     YamlHelper.validateGitsYaml(argGitsYaml);
 
-    'gits l10n --gits-yaml "$argGitsYaml"'.run;
+    'gits_cli l10n --gits-yaml "$argGitsYaml"'.run;
     MelosHelper.run('melos bootstrap');
-    StatusHelper.success('gits get');
+    StatusHelper.success('gits_cli get');
   }
 }
