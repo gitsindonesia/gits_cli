@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:gits_cli/constants.dart';
-import 'package:gits_cli/dependency_manager.dart';
+import 'package:gits_cli_command/constants.dart';
+import 'package:gits_cli_command/dependency_manager.dart';
 
 class ChangelogCommand extends Command {
   ChangelogCommand() {

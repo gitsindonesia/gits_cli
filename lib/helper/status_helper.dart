@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:gits_cli/dependency_manager.dart';
+import 'package:gits_cli_command/dependency_manager.dart';
 
 abstract class StatusHelper {
   static void success([String? message]) {

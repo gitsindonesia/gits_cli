@@ -1,18 +1,18 @@
 import 'dart:io';
 
-import 'package:gits_cli/build_app/build_command.dart';
-import 'package:gits_cli/dependency_manager.dart';
-import 'package:gits_cli/generate/firebase/firebase_command.dart';
-import 'package:gits_cli/generate/generate.dart';
-import 'package:gits_cli/project/analyze/analyze_command.dart';
-import 'package:gits_cli/project/drive/drive_command.dart';
-import 'package:gits_cli/project/project.dart';
-import 'package:gits_cli/project/test/coverage_command.dart';
-import 'package:gits_cli/project/test_drive/test_drive_command.dart';
-import 'package:gits_cli/project/upgrade/upgrade_command.dart';
-import 'package:gits_cli/tools/changelog/changelog_command.dart';
-import 'package:gits_cli/tools/doctor/doctor_command.dart';
-import 'package:gits_cli/tools/init/init_command.dart';
+import 'package:gits_cli_command/build_app/build_command.dart';
+import 'package:gits_cli_command/dependency_manager.dart';
+import 'package:gits_cli_command/generate/firebase/firebase_command.dart';
+import 'package:gits_cli_command/generate/generate.dart';
+import 'package:gits_cli_command/project/analyze/analyze_command.dart';
+import 'package:gits_cli_command/project/drive/drive_command.dart';
+import 'package:gits_cli_command/project/project.dart';
+import 'package:gits_cli_command/project/test/coverage_command.dart';
+import 'package:gits_cli_command/project/test_drive/test_drive_command.dart';
+import 'package:gits_cli_command/project/upgrade/upgrade_command.dart';
+import 'package:gits_cli_command/tools/changelog/changelog_command.dart';
+import 'package:gits_cli_command/tools/doctor/doctor_command.dart';
+import 'package:gits_cli_command/tools/init/init_command.dart';
 
 void main(List<String> arguments) {
   final runner =

@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:gits_cli/constants.dart';
-import 'package:gits_cli/dependency_manager.dart';
-import 'package:gits_cli/extensions/extensions.dart';
-import 'package:gits_cli/helper/helper.dart';
+import 'package:gits_cli_command/constants.dart';
+import 'package:gits_cli_command/dependency_manager.dart';
+import 'package:gits_cli_command/extensions/extensions.dart';
+import 'package:gits_cli_command/helper/helper.dart';
 
 class CoverageCommand extends Command {
   CoverageCommand() {
