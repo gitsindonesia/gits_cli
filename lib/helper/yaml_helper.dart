@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:gits_cli_command/dependency_manager.dart';
-import 'package:gits_cli_command/helper/status_helper.dart';
+import 'package:gits_cli/dependency_manager.dart';
+import 'package:gits_cli/helper/status_helper.dart';
 
 abstract class YamlHelper {
   static void validateGitsYaml([String? gitsYaml]) {

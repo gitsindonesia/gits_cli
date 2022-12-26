@@ -1,5 +1,5 @@
-import 'package:gits_cli_command/constants.dart';
-import 'package:gits_cli_command/helper/yaml_helper.dart';
+import 'package:gits_cli/constants.dart';
+import 'package:gits_cli/helper/yaml_helper.dart';
 
 abstract class FlavorHelper {
   static Map<dynamic, dynamic> dev(String pathGitsYaml) {

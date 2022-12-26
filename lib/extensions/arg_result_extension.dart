@@ -1,4 +1,4 @@
-import 'package:gits_cli_command/dependency_manager.dart';
+import 'package:gits_cli/dependency_manager.dart';
 
 extension ArgResultsExtension on ArgResults? {
   String getOptionTarget() => this?['target'] ?? 'lib/main.dart';
