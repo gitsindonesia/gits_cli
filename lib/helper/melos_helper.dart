@@ -84,6 +84,9 @@ scripts:
   }
 
   static void run(String melos) {
+    if (which('melos').notfound) {
+      'dart pub global activate melos'.run;
+    }
     if (!exists(join(current, 'melos.yaml'))) {
       init();
     }
