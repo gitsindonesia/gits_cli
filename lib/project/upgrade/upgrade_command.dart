@@ -20,7 +20,7 @@ class UpgradeCommand extends Command {
       negatable: false,
     );
     argParser.addFlag(
-      'gits',
+      'gits_cli',
       abbr: 'g',
       help:
           'Upgrade all gits_library package\'s dependencies to latest versions... (default)',

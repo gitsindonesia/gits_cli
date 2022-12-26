@@ -16,7 +16,7 @@ import 'package:gits_cli_command/tools/init/init_command.dart';
 
 void main(List<String> arguments) {
   final runner =
-      CommandRunner('gits', 'Get it simple command flutter with Gits CLI')
+      CommandRunner('gits_cli', 'Get it simple command flutter with Gits CLI')
         //* Generate
         ..addCommand(LocalizationCommand())
         ..addCommand(ConfigCommand())

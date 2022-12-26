@@ -158,27 +158,27 @@ class ConfigCommand extends Command {
     "tasks": [
         {
             "label": "gits-format",
-            "command": "gits format",
+            "command": "gits_cli format",
             "type": "shell"
         },
         {
             "label": "gits-config",
-            "command": "gits config",
+            "command": "gits_cli config",
             "type": "shell"
         },
         {
             "label": "firebase-dev",
-            "command": "gits firebase -f dev",
+            "command": "gits_cli firebase -f dev",
             "type": "shell"
         },
         {
             "label": "firebase-stag",
-            "command": "gits firebase -f stag",
+            "command": "gits_cli firebase -f stag",
             "type": "shell"
         },
         {
             "label": "firebase-prod",
-            "command": "gits firebase -f prod",
+            "command": "gits_cli firebase -f prod",
             "type": "shell"
         },
         {
