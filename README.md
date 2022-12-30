@@ -50,6 +50,7 @@ Gits CLI is dart command line interface for Gits Flutter Project.
 ## Installations
 
 1. Install Melos
+   
    Open your terminal then run the following command :
 
    ```dart
@@ -63,6 +64,7 @@ Gits CLI is dart command line interface for Gits Flutter Project.
    ```
 
 2. Install CLI
+   
    Install gits_cli by this command :
 
    ```dart
@@ -147,7 +149,7 @@ This command is used to generate the `.vscode/launch.json` and `.vscode/task.jso
 gits_cli config
 ```
 
-![File Generated](assets/file_generated.png)
+![VSCode Config](https://raw.githubusercontent.com/gitsindonesia/gits_cli/main/assets/file_generated.png)
 
 This command is specific to VSCode IDE user.
 
@@ -194,21 +196,26 @@ gits_cli run [flavor/environment] [app_version] [custom_target]
 ```
 
 - Flavor/Environment :  
-   | Flavor/Environment | Alternative | Description |
-  |----------|-------------|-------------|
-  | `-f dev` | `--flavor dev` | Run project on dev environment (Default) |
-  | `-f stag` | `--flavor stag` | Run project on staging environment|
-  | `-f prod` | `--flavor prod` | Run project on production environment |
-- App Version :  
-   | App Version | Description |
-  |----------|-------------|
-  | `--debug` |Run project on debug mode (Default) |
-  | `--profile` | Run project on profile mode|
-  | `--release` | Run project on release mode (Default) |
-- Custom Target :  
-   | Custom Target | Alternative | Description |
-  |----------|-------------|-------------|
-  | `-t [url_file]` | `--target [url_file]` | This command is used to run the application in a specific file, by default it will run the `lib/main.dart` file. |
+  
+| Flavor/Environment | Alternative | Description |
+|----------|-------------|-------------|
+| `-f dev` | `--flavor dev` | Run project on dev environment (Default) |
+| `-f stag` | `--flavor stag` | Run project on staging environment|
+| `-f prod` | `--flavor prod` | Run project on production environment |
+
+- App Version :
+  
+| App Version | Description |
+|----------|-------------|
+| `--debug` |Run project on debug mode (Default) |
+| `--profile` | Run project on profile mode|
+| `--release` | Run project on release mode (Default) |
+
+- Custom Target :
+  
+| Custom Target | Alternative | Description |
+|----------|-------------|-------------|
+| `-t [url_file]` | `--target [url_file]` | This command is used to run the application in a specific file, by default it will run the `lib/main.dart` file. |
 
 Example :
 
@@ -399,37 +406,50 @@ Examples :
 #### Build Project Options
 
 - Flavor/Environment :  
-   | Flavor/Environment | Alternative | Description |
-  |----------|-------------|-------------|
-  | `-f dev` | `--flavor dev` | Build project on dev environment (Default) |
-  | `-f stag` | `--flavor stag` | Build project on staging environment|
-  | `-f prod` | `--flavor prod` | Build project on production environment |
+  
+| Flavor/Environment | Alternative | Description |
+|----------|-------------|-------------|
+| `-f dev` | `--flavor dev` | Build project on dev environment (Default) |
+| `-f stag` | `--flavor stag` | Build project on staging environment|
+| `-f prod` | `--flavor prod` | Build project on production environment |
+
 - App Version :
-  | App Version | Description |
-  |----------|-------------|
-  | `--debug` | Build project on debug mode (Default) |
-  | `--profile` | Build project on profile mode|
-  | `--release` | Build project on release mode (Default) |
+
+| App Version | Description |
+|----------|-------------|
+| `--debug` | Build project on debug mode (Default) |
+| `--profile` | Build project on profile mode|
+| `--release` | Build project on release mode (Default) |
+
 - Custom Target :
-  | Custom Target | Alternative | Description |
-  |----------|-------------|-------------|
-  | `-t [url_file]` | `--target [url_file]` | This command is used to build the application in a specific file, by default it will run the `lib/main.dart` file. |
+  
+| Custom Target | Alternative | Description |
+|----------|-------------|-------------|
+| `-t [url_file]` | `--target [url_file]` | This command is used to build the application in a specific file, by default it will run the `lib/main.dart` file. |
+
 - Custom Build Name :
-  | Build Name | Description |
-  |----------|-------------|
-  | `--build-name [build_number]` | This command is used to build application with a specific name.|
+  
+| Build Name | Description |
+|----------|-------------|
+| `--build-name [build_number]` | This command is used to build application with a specific name.|
+
 - Custom Build Number :
-  | Build Number | Description |
-  |----------|-------------|
-  | `--build-number [build_number]` | This command is used to build application with a specific version number.|
+  
+| Build Number | Description |
+|----------|-------------|
+| `--build-number [build_number]` | This command is used to build application with a specific version number.|
+
 - No Obfuscate :
-  | Build Number | Description |
-  |----------|-------------|
-  | `--[no-]obfuscate` | In a release build, this flag removes identifiers and replaces them with randomized values for the purposes of source code obfuscation. This flag must always be combined with "--split-debug-info" option, the mapping between the values and the original identifiers is stored in the symbol map created in the specified directory. For an app built with this flag, the "flutter symbolize" command with the right program symbol file is required to obtain a human readable stack trace. (defaults to on)|
+
+| Build Number | Description |
+|----------|-------------|
+| `--[no-]obfuscate` | In a release build, this flag removes identifiers and replaces them with randomized values for the purposes of source code obfuscation. This flag must always be combined with "--split-debug-info" option, the mapping between the values and the original identifiers is stored in the symbol map created in the specified directory. For an app built with this flag, the "flutter symbolize" command with the right program symbol file is required to obtain a human readable stack trace. (defaults to on)|
+
 - Split Debug Info :
-  | Build Number | Description |
-  |----------|-------------|
-  | `--split-debug-info` | In a release build, this flag reduces application size by storing Dart program symbols in a separate file on the host rather than in the application. The value of the flag should be a directory where program symbol files can be stored for later use. These symbol files contain the information needed to symbolize Dart stack traces. For an app built with this flag, the "flutter symbolize" command with the right program symbol file is required to obtain a human readable stack trace. This flag cannot be combined with "--analyze-size". (defaults to "./.symbols/") |
+  
+| Build Number | Description |
+|----------|-------------|
+| `--split-debug-info` | In a release build, this flag reduces application size by storing Dart program symbols in a separate file on the host rather than in the application. The value of the flag should be a directory where program symbol files can be stored for later use. These symbol files contain the information needed to symbolize Dart stack traces. For an app built with this flag, the "flutter symbolize" command with the right program symbol file is required to obtain a human readable stack trace. This flag cannot be combined with "--analyze-size". (defaults to "./.symbols/") |
 
 ### Generate Commands
 
