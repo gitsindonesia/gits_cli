@@ -7,3 +7,6 @@ build/
 
 gits.yaml
 *.lock
+
+# VSCode file
+settings.json
