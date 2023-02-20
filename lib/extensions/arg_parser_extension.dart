@@ -49,6 +49,16 @@ used instead.''',
     );
   }
 
+  void addFlagQa({bool defaultsTo = false}) {
+    addFlag(
+      'qa',
+      help:
+          'Build a version of your app specialized for QA Integration test with flutter driver extension. will ignore --debug, --profile & --release, build will auto build in --profile',
+      defaultsTo: defaultsTo,
+      negatable: false,
+    );
+  }
+
   void addOptionFlavor({required String defaultsTo}) {
     addOption(
       'flavor',
