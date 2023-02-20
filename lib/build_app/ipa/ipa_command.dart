@@ -55,9 +55,8 @@ class IpaCommand extends Command {
     });
     final mode = argResults.getMode();
     if (argQa) {
-      final target = argResults?['target'] ?? 'lib/main_driver.dart';
       FlutterHelper.run(
-        'build ipa -t $target ${dartDefines.join(' ')} --profile $argExportMethod $argExportOptionsPlist $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
+        'build ipa -t "lib/main_driver.dart" ${dartDefines.join(' ')} --profile $argExportMethod $argExportOptionsPlist $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
         showLog: true,
       );
     } else {

@@ -51,9 +51,8 @@ class ApkCommand extends Command {
     });
     final mode = argResults.getMode();
     if (argQa) {
-      final target = argResults?['target'] ?? 'lib/main_driver.dart';
       FlutterHelper.run(
-        'build apk -t $target ${dartDefines.join(' ')} --profile $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
+        'build apk -t "lib/main_driver.dart" ${dartDefines.join(' ')} --profile $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
         showLog: true,
       );
     } else {
