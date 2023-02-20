@@ -1,3 +1,7 @@
+## 1.1.1
+
+- fix(build): issue target for qa
+
 ## 1.1.0
 
 - feat(build): add argument for qa build application integration test purpose

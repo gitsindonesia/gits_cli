@@ -54,9 +54,8 @@ class IosCommand extends Command {
     });
     final mode = argResults.getMode();
     if (argQa) {
-      final target = argResults?['target'] ?? 'lib/main_driver.dart';
       FlutterHelper.run(
-        'build ios -t $target ${dartDefines.join(' ')} --profile $argBuildNumber $argBuildName $argCodesign $argObfuscate $argSplitDebugInfo',
+        'build ios -t "lib/main_driver.dart" ${dartDefines.join(' ')} --profile $argBuildNumber $argBuildName $argCodesign $argObfuscate $argSplitDebugInfo',
         showLog: true,
       );
     } else {
