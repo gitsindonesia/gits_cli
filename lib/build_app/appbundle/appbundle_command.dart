@@ -8,6 +8,7 @@ class AppbundleCommand extends Command {
     argParser.addFlagDebug();
     argParser.addFlagProfile();
     argParser.addFlagRelease();
+    argParser.addFlagQa();
 
     argParser.addOptionFlavor(defaultsTo: Constants.prod);
     argParser.addOptionTarget();
@@ -34,6 +35,7 @@ class AppbundleCommand extends Command {
     final argBuildName = argResults.getOptionBuildName();
     final argObfuscate = argResults.getFlagObfuscate();
     final argSplitDebugInfo = argResults.getOptionSplitDebugInfo();
+    final argQa = argResults.getFlagQa();
 
     YamlHelper.validateGitsYaml(argGitsYaml);
 
@@ -48,10 +50,18 @@ class AppbundleCommand extends Command {
       dartDefines.add('${Constants.dartDefine} "$key=$value"');
     });
     final mode = argResults.getMode();
-    FlutterHelper.run(
-      'build appbundle -t $argTarget ${dartDefines.join(' ')} $mode $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
-      showLog: true,
-    );
+    if (argQa) {
+      final target = argResults?['target'] ?? 'lib/main_driver.dart';
+      FlutterHelper.run(
+        'build appbundle -t $target ${dartDefines.join(' ')} --profile $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
+        showLog: true,
+      );
+    } else {
+      FlutterHelper.run(
+        'build appbundle -t $argTarget ${dartDefines.join(' ')} $mode $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
+        showLog: true,
+      );
+    }
 
     StatusHelper.success('build appbundle');
   }

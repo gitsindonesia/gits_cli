@@ -8,6 +8,7 @@ class IosCommand extends Command {
     argParser.addFlagDebug();
     argParser.addFlagProfile();
     argParser.addFlagRelease();
+    argParser.addFlagQa();
 
     argParser.addOptionFlavor(defaultsTo: Constants.prod);
     argParser.addOptionTarget();
@@ -37,6 +38,7 @@ class IosCommand extends Command {
     final argCodesign = argResults.getFlagCodesign();
     final argObfuscate = argResults.getFlagObfuscate();
     final argSplitDebugInfo = argResults.getOptionSplitDebugInfo();
+    final argQa = argResults.getFlagQa();
 
     YamlHelper.validateGitsYaml(argGitsYaml);
 
@@ -51,10 +53,18 @@ class IosCommand extends Command {
       dartDefines.add('${Constants.dartDefine} "$key=$value"');
     });
     final mode = argResults.getMode();
-    FlutterHelper.run(
-      'build ios -t $argTarget ${dartDefines.join(' ')} $mode $argBuildNumber $argBuildName $argCodesign $argObfuscate $argSplitDebugInfo',
-      showLog: true,
-    );
+    if (argQa) {
+      final target = argResults?['target'] ?? 'lib/main_driver.dart';
+      FlutterHelper.run(
+        'build ios -t $target ${dartDefines.join(' ')} --profile $argBuildNumber $argBuildName $argCodesign $argObfuscate $argSplitDebugInfo',
+        showLog: true,
+      );
+    } else {
+      FlutterHelper.run(
+        'build ios -t $argTarget ${dartDefines.join(' ')} $mode $argBuildNumber $argBuildName $argCodesign $argObfuscate $argSplitDebugInfo',
+        showLog: true,
+      );
+    }
 
     StatusHelper.success('build ios');
   }

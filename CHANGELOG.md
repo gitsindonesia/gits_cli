@@ -1,3 +1,7 @@
+## 1.1.0
+
+- feat(build): add argument for qa build application integration test purpose
+
 ## 1.0.2
 
 - docs: update table content in readme

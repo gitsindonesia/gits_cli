@@ -23,6 +23,7 @@ extension ArgResultsExtension on ArgResults? {
   bool getFlagRelease() => this?['release'];
   String getFlagCodesign() =>
       this?['codesign'] ? '--codesign' : '--no-codesign';
+  bool getFlagQa() => this?['qa'];
 
   String getMode() {
     String mode = '--release';

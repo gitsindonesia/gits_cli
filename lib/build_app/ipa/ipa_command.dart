@@ -8,6 +8,7 @@ class IpaCommand extends Command {
     argParser.addFlagDebug();
     argParser.addFlagProfile();
     argParser.addFlagRelease();
+    argParser.addFlagQa();
 
     argParser.addOptionFlavor(defaultsTo: Constants.prod);
     argParser.addOptionTarget();
@@ -38,6 +39,7 @@ class IpaCommand extends Command {
     final argBuildName = argResults.getOptionBuildName();
     final argObfuscate = argResults.getFlagObfuscate();
     final argSplitDebugInfo = argResults.getOptionSplitDebugInfo();
+    final argQa = argResults.getFlagQa();
 
     YamlHelper.validateGitsYaml(argGitsYaml);
 
@@ -52,10 +54,18 @@ class IpaCommand extends Command {
       dartDefines.add('${Constants.dartDefine} "$key=$value"');
     });
     final mode = argResults.getMode();
-    FlutterHelper.run(
-      'build ipa -t $argTarget ${dartDefines.join(' ')} $mode $argExportMethod $argExportOptionsPlist $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
-      showLog: true,
-    );
+    if (argQa) {
+      final target = argResults?['target'] ?? 'lib/main_driver.dart';
+      FlutterHelper.run(
+        'build ipa -t $target ${dartDefines.join(' ')} --profile $argExportMethod $argExportOptionsPlist $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
+        showLog: true,
+      );
+    } else {
+      FlutterHelper.run(
+        'build ipa -t $argTarget ${dartDefines.join(' ')} $mode $argExportMethod $argExportOptionsPlist $argBuildNumber $argBuildName $argObfuscate $argSplitDebugInfo',
+        showLog: true,
+      );
+    }
 
     StatusHelper.success('build ipa');
   }
