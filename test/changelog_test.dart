@@ -533,9 +533,12 @@ void main() {
     final regex = RegExp(r'(#+)(\s+)?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)');
     final match = regex.allMatches(changelog).take(2).toList();
     if (match.length == 2) {
-      return changelog.substring(match[0].start, match[1].start);
+      return changelog
+          .substring(match[0].start, match[1].start)
+          .replaceAll(regex, '')
+          .trim();
     } else {
-      return changelog;
+      return changelog.replaceAll(regex, '').trim();
     }
   }
 
