@@ -1,3 +1,7 @@
+## 1.1.2
+
+- fix(changelog): remove show version and trim string changelog
+
 ## 1.1.1
 
 - fix(build): issue target for qa
