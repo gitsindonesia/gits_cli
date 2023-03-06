@@ -1,3 +1,8 @@
+## 1.2.0
+
+- feat: add path for config in pubspec.yaml for gits_cli
+- feat(test): add spesific test for feature
+
 ## 1.1.2
 
 - fix(changelog): remove show version and trim string changelog
