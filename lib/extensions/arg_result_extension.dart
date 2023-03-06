@@ -1,9 +1,19 @@
 import 'package:gits_cli/dependency_manager.dart';
+import 'package:gits_cli/helper/helper.dart';
 
 extension ArgResultsExtension on ArgResults? {
   String getOptionTarget() => this?['target'] ?? 'lib/main.dart';
-  String getOptionGitsYaml() =>
-      this?['gits-yaml'] ?? join(current, 'gits.yaml');
+  String getOptionGitsYaml() {
+    final path = join(current, 'pubspec.yaml');
+    if (exists(path)) {
+      final pathGitsCli = YamlHelper.loadFileYaml(path)['gits_cli'];
+      if (pathGitsCli != null) {
+        return pathGitsCli;
+      }
+    }
+    return this?['gits-yaml'] ?? join(current, 'gits.yaml');
+  }
+
   String getOptionFlavor({required String defaultTo}) =>
       this?['flavor'] ?? defaultTo;
   String getOptionExportMethod() => this?['export-method'] != null
