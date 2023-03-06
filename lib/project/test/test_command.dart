@@ -1,9 +1,16 @@
 import 'package:gits_cli/constants.dart';
 import 'package:gits_cli/dependency_manager.dart';
-import 'package:gits_cli/helper/melos_helper.dart';
-import 'package:gits_cli/helper/status_helper.dart';
+import 'package:gits_cli/helper/helper.dart';
 
 class TestCommand extends Command {
+  TestCommand() {
+    argParser.addOption(
+      'feature',
+      abbr: 'f',
+      help: 'Test with spesific feature',
+    );
+  }
+
   @override
   String get name => 'test';
 
@@ -16,7 +23,30 @@ class TestCommand extends Command {
 
   @override
   void run() {
-    MelosHelper.run('melos run test');
+    final String? feature = argResults?['feature'];
+
+    if (feature != null && !feature.contains('/')) {
+      String workingDirectory = join(current);
+      switch (feature) {
+        case 'core':
+          workingDirectory = join(current, 'core');
+          break;
+        case 'assets':
+          workingDirectory = join(current, 'assets');
+          break;
+        case 'asset':
+          workingDirectory = join(current, 'assets');
+          break;
+        default:
+          workingDirectory = join(current, 'features', feature);
+      }
+      FlutterHelper.start('test', workingDirectory: workingDirectory);
+    } else if (feature != null && feature.contains('/')) {
+      FlutterHelper.start('test', workingDirectory: feature);
+    } else {
+      MelosHelper.run('melos run test');
+    }
+
     StatusHelper.success('gits_cli test');
   }
 }
