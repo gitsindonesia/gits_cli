@@ -1,3 +1,7 @@
+## 1.3.0
+
+- feat: add new command cucumber for support integration test with gherkin language
+
 ## 1.2.0
 
 - feat: add path for config in pubspec.yaml for gits_cli

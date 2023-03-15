@@ -29,6 +29,7 @@ Gits CLI is dart command line interface for Gits Flutter Project.
       - [Coverage](#coverage)
       - [Format](#format)
       - [Clean](#clean)
+      - [Cucumber](#cucumber)
     - [Build Project Commands](#build-project-commands)
       - [Android APK File Format](#android-apk-file-format)
       - [Android App Bundle](#android-app-bundle)
@@ -50,7 +51,7 @@ Gits CLI is dart command line interface for Gits Flutter Project.
 ## Installations
 
 1. Install Melos
-   
+
    Open your terminal then run the following command :
 
    ```dart
@@ -64,7 +65,7 @@ Gits CLI is dart command line interface for Gits Flutter Project.
    ```
 
 2. Install CLI
-   
+
    Install gits_cli by this command :
 
    ```dart
@@ -280,6 +281,30 @@ This command is used to delete the l10n, build/ and .dart_tool/ in main, core & 
 ```bash
 gits_cli clean
 ```
+
+#### Cucumber
+
+For setup your gits_cucumber please follow [documentation](https://pub.dev/packages/gits_cucumber):
+
+Once your done setup, then run command:
+
+```console
+gits cucumber
+```
+
+or your need to be specific feature you can do run command:
+
+```console
+gits cucumber login
+```
+
+or multiple
+
+```console
+gits cucumber login,register,home
+```
+
+by default run `integration_test/cucumber_test.dart` by flavor dev. if you want to running flavor stag or prod just add argument `--flavor stag` or `--flavor prod`
 
 ### Build Project Commands
 

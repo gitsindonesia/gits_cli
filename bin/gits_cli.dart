@@ -5,6 +5,7 @@ import 'package:gits_cli/dependency_manager.dart';
 import 'package:gits_cli/generate/firebase/firebase_command.dart';
 import 'package:gits_cli/generate/generate.dart';
 import 'package:gits_cli/project/analyze/analyze_command.dart';
+import 'package:gits_cli/project/cucumber/cucumber_command.dart';
 import 'package:gits_cli/project/drive/drive_command.dart';
 import 'package:gits_cli/project/project.dart';
 import 'package:gits_cli/project/test/coverage_command.dart';
@@ -32,6 +33,7 @@ void main(List<String> arguments) {
         ..addCommand(AnalyzeCommand())
         ..addCommand(DriveCommand())
         ..addCommand(TestDriveCommand())
+        ..addCommand(CucumberCommand())
         //* Build
         ..addCommand(BuildCommand())
         //* Tools
@@ -49,7 +51,7 @@ void main(List<String> arguments) {
   try {
     final results = runner.argParser.parse(arguments);
     if (results.wasParsed('version')) {
-      print('Gits CLI 1.2.0');
+      print('Gits CLI 1.3.0');
       exit(0);
     }
   } catch (e) {
