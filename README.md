@@ -293,19 +293,19 @@ For setup your gits_cucumber please follow [documentation](https://pub.dev/packa
 Once your done setup, then run command:
 
 ```console
-gits cucumber
+gits_cli cucumber
 ```
 
 or your need to be specific feature you can do run command:
 
 ```console
-gits cucumber login
+gits_cli cucumber login
 ```
 
 or multiple
 
 ```console
-gits cucumber login,register,home
+gits_cli cucumber login,register,home
 ```
 
 by default run `integration_test/cucumber_test.dart` by flavor dev. if you want to running flavor stag or prod just add argument `--flavor stag` or `--flavor prod`
