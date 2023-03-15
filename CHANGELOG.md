@@ -1,3 +1,7 @@
+## 1.3.0+1
+
+- docs: update documentation
+
 ## 1.3.0
 
 - feat: add new command cucumber for support integration test with gherkin language

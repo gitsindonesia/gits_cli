@@ -284,6 +284,10 @@ gits_cli clean
 
 #### Cucumber
 
+First you need to download `gherkin` executable in this [release](https://github.com/gitsindonesia/gits_cli/releases/tag/cucumber)
+
+make sure `gherkin` was export in your machine.
+
 For setup your gits_cucumber please follow [documentation](https://pub.dev/packages/gits_cucumber):
 
 Once your done setup, then run command:
