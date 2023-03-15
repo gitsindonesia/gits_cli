@@ -18,6 +18,7 @@ abstract class FlutterHelper {
     String argument, {
     bool showLog = false,
     String? workingDirectory,
+    Progress? progress,
   }) {
     String command = '';
     if (Platform.isWindows) {
@@ -26,6 +27,9 @@ abstract class FlutterHelper {
       command = 'flutter $argument';
     }
     if (showLog) print(command);
-    command.start(workingDirectory: workingDirectory);
+    command.start(
+      workingDirectory: workingDirectory,
+      progress: progress,
+    );
   }
 }
