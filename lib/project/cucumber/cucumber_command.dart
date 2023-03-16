@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:gits_cli/constants.dart';
@@ -38,7 +37,7 @@ class CucumberCommand extends Command {
 
     YamlHelper.validateGitsYaml(argGitsYaml);
 
-    'gits l10n --gits-yaml "$argGitsYaml"'.run;
+    'gits_cli l10n --gits-yaml "$argGitsYaml"'.run;
 
     final flavor = FlavorHelper.byFlavor(argFlavor, argGitsYaml);
     FirebaseHelper.run(argFlavor, argGitsYaml);
@@ -62,13 +61,17 @@ class CucumberCommand extends Command {
       ndjsons.add({'ndjson': console.lines.join('\n')});
     }
 
-    final bytes = utf8.encode(jsonEncode(ndjsons));
-    final gzipNdjson = gzip.encode(bytes);
+    final pathNdjson =
+        join(current, 'integration_test', 'ndjson', 'ndjson_gherkin.json');
+    DirectoryHelper.createDir(pathNdjson);
+    pathNdjson.write(jsonEncode(ndjsons));
+
+    StatusHelper.generated(pathNdjson);
 
     print('Starting cucumber integration test....');
 
     FlutterHelper.start(
-      'test integration_test/cucumber_test.dart ${dartDefines.join(' ')} --dart-define "NDJSON_GHERKIN=${gzipNdjson.join(',')}" --dart-define "INTEGRATION_TEST=true" --no-pub',
+      'test integration_test/cucumber_test.dart ${dartDefines.join(' ')} --dart-define "INTEGRATION_TEST=true" --no-pub',
       progress: Progress((line) {
         if (line.contains('cucumber-report')) {
           final dir = join(current, 'integration_test', 'report');
