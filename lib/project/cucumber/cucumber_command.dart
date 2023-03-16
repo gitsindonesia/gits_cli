@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:gits_cli/constants.dart';
@@ -61,10 +62,9 @@ class CucumberCommand extends Command {
       ndjsons.add({'ndjson': console.lines.join('\n')});
     }
 
-    final pathNdjson =
-        join(current, 'integration_test', 'ndjson', 'ndjson_gherkin.json');
+    final pathNdjson = join(current, 'integration_test', 'ndjson');
     DirectoryHelper.createDir(pathNdjson);
-    pathNdjson.write(jsonEncode(ndjsons));
+    join(pathNdjson, 'ndjson_gherkin.json').write(jsonEncode(ndjsons));
 
     StatusHelper.generated(pathNdjson);
 
@@ -81,10 +81,18 @@ class CucumberCommand extends Command {
           join(dir, 'cucumber-report.json').write(cucumberReport);
 
           if (which('npm').found) {
-            'npm install'.start(
-              workingDirectory: join(current, 'integration_test', 'report'),
-              progress: Progress.devNull(),
-            );
+            if (Platform.isWindows) {
+              'npm.cmd install'.start(
+                workingDirectory: join(current, 'integration_test', 'report'),
+                progress: Progress.devNull(),
+              );
+            } else {
+              'npm install'.start(
+                workingDirectory: join(current, 'integration_test', 'report'),
+                progress: Progress.devNull(),
+              );
+            }
+
             'node index.js'.start(
               workingDirectory: join(current, 'integration_test', 'report'),
               progress: Progress.devNull(),
