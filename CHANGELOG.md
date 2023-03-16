@@ -1,3 +1,11 @@
+## 1.4.2
+
+- fix: running npm install for window in cucumber command
+
+## 1.4.1
+
+- fix: gits cucumber generate ndjson_gherkin.json
+
 ## 1.4.0
 
 - feat: change ndjson gherkin from --dart-define to generate ndjson_gherkin.json
