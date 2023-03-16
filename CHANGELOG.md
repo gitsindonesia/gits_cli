@@ -1,3 +1,19 @@
+## 1.4.0
+
+- feat: change ndjson gherkin from --dart-define to generate ndjson_gherkin.json
+
+## 1.3.3
+
+- revert: fixing path for gits cucumber test
+
+## 1.3.2
+
+- fix: fixing path for gits cucumber test
+
+## 1.3.1
+
+- fix: gits command for gits_cli cucumber
+
 ## 1.3.0+2
 
 - docs: update documentation
