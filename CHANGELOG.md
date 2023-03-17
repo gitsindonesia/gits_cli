@@ -1,3 +1,7 @@
+## 1.4.3
+
+- fix: delete ndjson_gherkin.json in integration_test in developmen & release
+
 ## 1.4.2
 
 - fix: running npm install for window in cucumber command
