@@ -78,6 +78,13 @@ Gits CLI is dart command line interface for Gits Flutter Project.
    gits_cli -v
    ```
 
+If this directory is missing from your PATH, locate the file for your platform and add it.
+
+| Platform       | Cache location               |
+|----------------|------------------------------|
+| macOS or Linux | HOME/.pub-cache/bin          |
+| Windows*       | %LOCALAPPDATA%\Pub\Cache\bin |
+
 ## Usage
 
 To use the Gits CLI, you must run the `gits_cli` command from the terminal on your project directory.
