@@ -1,7 +1,6 @@
 import 'package:gits_cli/constants.dart';
 import 'package:gits_cli/dependency_manager.dart';
 import 'package:gits_cli/extensions/extensions.dart';
-import 'package:gits_cli/helper/arb_helper.dart';
 import 'package:gits_cli/helper/helper.dart';
 
 class LocalizationCommand extends Command {

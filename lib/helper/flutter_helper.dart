@@ -3,13 +3,24 @@ import 'dart:io';
 import 'package:gits_cli/dependency_manager.dart';
 
 abstract class FlutterHelper {
-  static void run(String argument, {bool showLog = false}) {
-    String command = '';
+  static String getCommandFlutter() {
     if (Platform.isWindows) {
-      command = 'flutter.bat $argument';
+      return 'flutter.bat';
     } else {
-      command = 'flutter $argument';
+      return 'flutter';
     }
+  }
+
+  static String getCommandDart() {
+    if (Platform.isWindows) {
+      return 'dart.bat';
+    } else {
+      return 'dart';
+    }
+  }
+
+  static void run(String argument, {bool showLog = false}) {
+    String command = '${getCommandFlutter()} $argument';
     if (showLog) print(command);
     command.run;
   }
@@ -20,12 +31,7 @@ abstract class FlutterHelper {
     String? workingDirectory,
     Progress? progress,
   }) {
-    String command = '';
-    if (Platform.isWindows) {
-      command = 'flutter.bat $argument';
-    } else {
-      command = 'flutter $argument';
-    }
+    String command = '${getCommandFlutter()} $argument';
     if (showLog) print(command);
     command.start(
       workingDirectory: workingDirectory,

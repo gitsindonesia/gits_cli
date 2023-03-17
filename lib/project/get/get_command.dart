@@ -18,13 +18,15 @@ class GetCommand extends Command {
   String get category => Constants.project;
 
   @override
-  void run() {
+  void run() async {
     final argGitsYaml = argResults.getOptionGitsYaml();
 
     YamlHelper.validateGitsYaml(argGitsYaml);
 
     'gits_cli l10n --gits-yaml "$argGitsYaml"'.run;
-    MelosHelper.run('melos bootstrap');
+
+    final yaml = YamlHelper.loadFileYaml(argGitsYaml);
+    await GitsModularHelper.get(concurrent: yaml.concurrent);
     StatusHelper.success('gits_cli get');
   }
 }

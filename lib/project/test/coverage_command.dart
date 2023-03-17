@@ -41,7 +41,7 @@ class CoverageCommand extends Command {
       await createCoverageHelperTest(path, packageName);
     }
 
-    MelosHelper.run('melos run coverage');
+    await GitsModularHelper.coverage(concurrent: gitsYaml.concurrent);
 
     final pathCoverageLcov = 'coverage/lcov.info';
     if (!exists(pathCoverageLcov)) {

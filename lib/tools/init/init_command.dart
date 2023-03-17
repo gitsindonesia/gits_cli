@@ -1,6 +1,5 @@
 import 'package:gits_cli/constants.dart';
 import 'package:gits_cli/dependency_manager.dart';
-import 'package:gits_cli/helper/melos_helper.dart';
 import 'package:gits_cli/helper/status_helper.dart';
 
 class InitCommand extends Command {
@@ -84,12 +83,6 @@ coverage:
 ''');
 
       StatusHelper.generated(join(current, 'gits.yaml'));
-    }
-
-    if (exists(join(current, 'melos.yaml'))) {
-      StatusHelper.warning('you already have melos.yaml in your project root');
-    } else {
-      MelosHelper.init();
     }
   }
 }

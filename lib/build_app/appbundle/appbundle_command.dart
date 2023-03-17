@@ -3,8 +3,6 @@ import 'package:gits_cli/dependency_manager.dart';
 import 'package:gits_cli/extensions/extensions.dart';
 import 'package:gits_cli/helper/helper.dart';
 
-import '../../helper/cucumber_helper.dart';
-
 class AppbundleCommand extends Command {
   AppbundleCommand() {
     argParser.addFlagDebug();
@@ -28,9 +26,9 @@ class AppbundleCommand extends Command {
   String get description => 'Build android aab with flavor.';
 
   @override
-  void run() {
+  void run() async {
     CucumberHelper.removeNdjsonGherkin();
-    MelosHelper.format();
+    await GitsModularHelper.format();
     final argTarget = argResults.getOptionTarget();
     final argFlavor = argResults.getOptionFlavor(defaultTo: Constants.prod);
     final argGitsYaml = argResults.getOptionGitsYaml();

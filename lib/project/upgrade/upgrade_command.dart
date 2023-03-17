@@ -1,11 +1,11 @@
 import 'package:gits_cli/constants.dart';
 import 'package:gits_cli/dependency_manager.dart';
-import 'package:gits_cli/helper/flutter_helper.dart';
-import 'package:gits_cli/helper/melos_helper.dart';
-import 'package:gits_cli/helper/status_helper.dart';
+import 'package:gits_cli/extensions/extensions.dart';
+import 'package:gits_cli/helper/helper.dart';
 
 class UpgradeCommand extends Command {
   UpgradeCommand() {
+    argParser.addOptionGitsYaml();
     argParser.addFlag(
       'all',
       abbr: 'a',
@@ -39,9 +39,14 @@ class UpgradeCommand extends Command {
   String get category => Constants.project;
 
   @override
-  void run() {
+  void run() async {
     if (argResults?.wasParsed('all') ?? false) {
-      MelosHelper.run('melos run packages:upgrade');
+      final argGitsYaml = argResults.getOptionGitsYaml();
+
+      YamlHelper.validateGitsYaml(argGitsYaml);
+      final yaml = YamlHelper.loadFileYaml(argGitsYaml);
+
+      await GitsModularHelper.upgrade(concurrent: yaml.concurrent);
       return;
     }
     var directory = 'gits_library';

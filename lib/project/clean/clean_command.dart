@@ -19,7 +19,7 @@ class CleanCommand extends Command {
   String get category => Constants.project;
 
   @override
-  void run() {
+  void run() async {
     final argGitsYaml = argResults.getOptionGitsYaml();
 
     YamlHelper.validateGitsYaml(argGitsYaml);
@@ -32,7 +32,8 @@ class CleanCommand extends Command {
       delete(join(current, 'ios', 'Podfile.lock'));
     }
 
-    MelosHelper.run('melos run clean:all');
+    final yaml = YamlHelper.loadFileYaml(argGitsYaml);
+    await GitsModularHelper.clean(concurrent: yaml.concurrent);
 
     StatusHelper.success('gits_cli clean');
   }
