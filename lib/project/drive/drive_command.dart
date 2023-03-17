@@ -28,7 +28,7 @@ class DriveCommand extends Command {
   String get category => Constants.project;
 
   @override
-  void run() {
+  void run() async {
     final argTarget = argResults.getOptionTarget();
     final argFlavor = argResults.getOptionFlavor(defaultTo: Constants.dev);
     final argGitsYaml = argResults.getOptionGitsYaml();
@@ -39,7 +39,7 @@ class DriveCommand extends Command {
     YamlHelper.validateGitsYaml(argGitsYaml);
 
     if (argUseApp.isEmpty) {
-      MelosHelper.format();
+      await GitsModularHelper.format();
       'gits_cli l10n --gits-yaml "$argGitsYaml"'.run;
     }
 

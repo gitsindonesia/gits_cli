@@ -3,8 +3,6 @@ import 'package:gits_cli/dependency_manager.dart';
 import 'package:gits_cli/extensions/extensions.dart';
 import 'package:gits_cli/helper/helper.dart';
 
-import '../../helper/cucumber_helper.dart';
-
 class RunCommand extends Command {
   RunCommand() {
     argParser.addFlagDebug(defaultsTo: true);
@@ -27,9 +25,9 @@ class RunCommand extends Command {
   String get category => Constants.project;
 
   @override
-  void run() {
+  void run() async {
     CucumberHelper.removeNdjsonGherkin();
-    MelosHelper.format();
+    await GitsModularHelper.format();
     final argTarget = argResults.getOptionTarget();
     final argFlavor = argResults.getOptionFlavor(defaultTo: Constants.dev);
     final argGitsYaml = argResults.getOptionGitsYaml();

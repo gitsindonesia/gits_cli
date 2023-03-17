@@ -3,8 +3,6 @@ import 'package:gits_cli/dependency_manager.dart';
 import 'package:gits_cli/extensions/extensions.dart';
 import 'package:gits_cli/helper/helper.dart';
 
-import '../../helper/cucumber_helper.dart';
-
 class IosCommand extends Command {
   IosCommand() {
     argParser.addFlagDebug();
@@ -30,9 +28,9 @@ class IosCommand extends Command {
       'Build an iOS application bundle (Mac OS X host only).';
 
   @override
-  void run() {
+  void run() async {
     CucumberHelper.removeNdjsonGherkin();
-    MelosHelper.format();
+    await GitsModularHelper.format();
     final argTarget = argResults.getOptionTarget();
     final argFlavor = argResults.getOptionFlavor(defaultTo: Constants.prod);
     final argGitsYaml = argResults.getOptionGitsYaml();

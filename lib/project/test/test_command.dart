@@ -1,9 +1,11 @@
 import 'package:gits_cli/constants.dart';
 import 'package:gits_cli/dependency_manager.dart';
+import 'package:gits_cli/extensions/extensions.dart';
 import 'package:gits_cli/helper/helper.dart';
 
 class TestCommand extends Command {
   TestCommand() {
+    argParser.addOptionGitsYaml();
     argParser.addOption(
       'feature',
       abbr: 'f',
@@ -22,7 +24,7 @@ class TestCommand extends Command {
   String get category => Constants.project;
 
   @override
-  void run() {
+  void run() async {
     final String? feature = argResults?['feature'];
 
     if (feature != null && !feature.contains('/')) {
@@ -44,7 +46,12 @@ class TestCommand extends Command {
     } else if (feature != null && feature.contains('/')) {
       FlutterHelper.start('test', workingDirectory: feature);
     } else {
-      MelosHelper.run('melos run test');
+      final argGitsYaml = argResults.getOptionGitsYaml();
+
+      YamlHelper.validateGitsYaml(argGitsYaml);
+      final yaml = YamlHelper.loadFileYaml(argGitsYaml);
+
+      await GitsModularHelper.test(concurrent: yaml.concurrent);
     }
 
     StatusHelper.success('gits_cli test');

@@ -50,33 +50,17 @@ Gits CLI is dart command line interface for Gits Flutter Project.
 
 ## Installations
 
-1. Install Melos
+Install gits_cli by this command :
 
-   Open your terminal then run the following command :
+```dart
+dart pub global activate gits_cli
+```
 
-   ```dart
-   dart pub global activate melos
-   ```
+Make sure gits_cli was installed, you can check by this command :
 
-   Make sure the melow was installed, you can check by this command :
-
-   ```dart
-   melos -v
-   ```
-
-2. Install CLI
-
-   Install gits_cli by this command :
-
-   ```dart
-   dart pub global activate gits_cli
-   ```
-
-   Make sure gits_cli was installed, you can check by this command :
-
-   ```dart
-   gits_cli -v
-   ```
+```dart
+gits_cli -v
+```
 
 If this directory is missing from your PATH, locate the file for your platform and add it.
 
@@ -141,13 +125,13 @@ gits_cli doctor
 
 #### Init
 
-This command is used to initialize the project to generate project configuration files in the form of `melos.yaml` and `gits.yaml` files.
+This command is used to initialize the project to generate project configuration files in the form of `gits.yaml` files.
 
 ```bash
 gits_cli init
 ```
 
-This command only works if the `melos.yaml` and `gits.yaml` files do not exist.
+This command only works if the `gits.yaml` files do not exist.
 
 #### Config
 

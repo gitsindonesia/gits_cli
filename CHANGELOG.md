@@ -1,3 +1,8 @@
+## 2.0.0
+
+- feat!: break change remove dependency melos
+- feat: add gits modular helper for change dependency to melos
+
 ## 1.4.3
 
 - fix: delete ndjson_gherkin.json in integration_test in developmen & release
