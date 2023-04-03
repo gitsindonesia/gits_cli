@@ -39,6 +39,9 @@ class TestCommand extends Command {
         case 'asset':
           workingDirectory = join(current, 'assets');
           break;
+        case 'main':
+          workingDirectory = current;
+          break;
         default:
           workingDirectory = join(current, 'features', feature);
       }

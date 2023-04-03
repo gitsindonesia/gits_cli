@@ -51,16 +51,15 @@ void main(List<String> arguments) {
   try {
     final results = runner.argParser.parse(arguments);
     if (results.wasParsed('version')) {
-      print('Gits CLI 2.0.0');
+      print('Gits CLI 2.0.1');
       exit(0);
     }
   } catch (e) {
-    printerr(e.toString());
+    printerr(red(e.toString()));
   }
 
   runner.run(arguments).onError((error, stackTrace) {
-    print(error);
-    print(stackTrace);
+    printerr(red(error.toString()));
     exit(1);
   });
 }

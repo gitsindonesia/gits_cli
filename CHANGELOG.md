@@ -1,3 +1,9 @@
+## 2.0.1
+
+- fix(test_command): add test for main feature
+- fix(doctor_command): flutter doctor now check gherkin and lcov
+- fix: add stdout and argument --no-pub in gits modular helper
+
 ## 2.0.0
 
 - feat!: break change remove dependency melos
