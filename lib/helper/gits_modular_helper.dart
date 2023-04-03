@@ -12,6 +12,7 @@ abstract class GitsModularHelper {
     List<String> commands, {
     int concurrent = defaultConcurrent,
     void Function(String)? customCommand,
+    void Function(String line)? stdout,
   }) async {
     final workingDirectoryFlutter = find('pubspec.yaml', workingDirectory: '.')
         .toList()
@@ -24,12 +25,31 @@ abstract class GitsModularHelper {
     for (var e in workingDirectoryFlutter) {
       futures.add(() async {
         final path = e.replaceAll(current, '.');
-        print('🚀 $path: ${commands.join(', ')}');
-        for (var command in commands) {
-          command.start(workingDirectory: e, progress: Progress.devNull());
+        try {
+          print('🚀 $path: ${commands.join(', ')}');
+          for (var command in commands) {
+            command.start(
+              workingDirectory: e,
+              progress: Progress(
+                (line) {
+                  stdout?.call(line);
+                },
+                stderr: (line) {
+                  if (line.isEmpty) return;
+                  if (line.contains('Waiting for another flutter command')) {
+                    return;
+                  }
+                  printerr(red(line));
+                },
+              ),
+            );
+          }
+          customCommand?.call(e);
+          print('✅  $path: ${commands.join(', ')}');
+        } catch (e) {
+          print('❌  $path: ${commands.join(', ')}');
+          rethrow;
         }
-        customCommand?.call(e);
-        print('✅  $path: ${commands.join(', ')}');
       });
     }
 
@@ -48,8 +68,20 @@ abstract class GitsModularHelper {
   }
 
   static Future<void> analyze({int concurrent = defaultConcurrent}) => execute(
-        ['${FlutterHelper.getCommandFlutter()} analyze . --fatal-infos'],
+        ['${FlutterHelper.getCommandFlutter()} analyze . --no-pub'],
         concurrent: concurrent,
+        stdout: (line) {
+          if (line.isEmpty) return;
+          if (line.contains(RegExp(r'error'))) {
+            printerr(red(line));
+          }
+          if (line.contains(RegExp(r'info'))) {
+            printerr(blue(line));
+          }
+          if (line.contains(RegExp(r'warning'))) {
+            printerr(orange(line));
+          }
+        },
       );
   static Future<void> clean({int concurrent = defaultConcurrent}) => execute(
         ['${FlutterHelper.getCommandFlutter()} clean'],
@@ -68,12 +100,20 @@ abstract class GitsModularHelper {
         concurrent: concurrent,
       );
   static Future<void> coverage({int concurrent = defaultConcurrent}) => execute(
-        ['${FlutterHelper.getCommandFlutter()} test --coverage'],
+        ['${FlutterHelper.getCommandFlutter()} test --coverage --no-pub'],
         concurrent: concurrent,
+        stdout: (line) {
+          if (line.isEmpty || line.contains(RegExp(r'\d{2}:\d{2}'))) return;
+          print(red(line));
+        },
       );
   static Future<void> test({int concurrent = defaultConcurrent}) => execute(
-        ['${FlutterHelper.getCommandFlutter()} test'],
+        ['${FlutterHelper.getCommandFlutter()} test --no-pub'],
         concurrent: concurrent,
+        stdout: (line) {
+          if (line.isEmpty || line.contains(RegExp(r'\d{2}:\d{2}'))) return;
+          print(red(line));
+        },
       );
   static Future<void> upgrade({int concurrent = defaultConcurrent}) => execute(
         [

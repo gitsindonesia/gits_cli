@@ -55,12 +55,11 @@ void main(List<String> arguments) {
       exit(0);
     }
   } catch (e) {
-    printerr(e.toString());
+    printerr(red(e.toString()));
   }
 
   runner.run(arguments).onError((error, stackTrace) {
-    print(error);
-    print(stackTrace);
+    printerr(red(error.toString()));
     exit(1);
   });
 }
