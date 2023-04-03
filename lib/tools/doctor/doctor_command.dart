@@ -16,7 +16,7 @@ class DoctorCommand extends Command {
   void run() {
     if (which('flutter').found) {
       print('${green('[✓]')} Flutter installed');
-      FlutterHelper.run('--version');
+      FlutterHelper.run('doctor');
     } else {
       printerr('${red('[x]')} Flutter not installed');
       printerr(
@@ -24,13 +24,21 @@ class DoctorCommand extends Command {
       );
     }
 
-    if (which('melos').found) {
-      print('${green('[✓]')} Melos installed');
-      'melos --version'.run;
+    if (which('gherkin').found) {
+      print('${green('[✓]')} Gherkin installed');
     } else {
-      printerr('${red('[x]')} Melos not installed');
+      printerr('${red('[x]')} Gherkin not installed');
       printerr(
-        'You can install in https://docs.flutter.dev/get-started/install',
+        'You can install in https://github.com/gitsindonesia/gits_cli/releases/tag/cucumber',
+      );
+    }
+
+    if (which('lcov').found) {
+      print('${green('[✓]')} lcov installed');
+    } else {
+      printerr('${red('[x]')} lcov not installed');
+      printerr(
+        'You can follow installation in https://github.com/linux-test-project/lcov',
       );
     }
   }
