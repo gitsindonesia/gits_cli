@@ -1,4 +1,4 @@
-## 3.0.0
+## 2.1.0
 
 - feat: support dart 3.0.0 and flutter 3.10.0
 
