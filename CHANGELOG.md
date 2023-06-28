@@ -1,3 +1,7 @@
+## 3.0.0
+
+- feat: support dart 3.0.0 and flutter 3.10.0
+
 ## 2.0.1
 
 - fix(test_command): add test for main feature

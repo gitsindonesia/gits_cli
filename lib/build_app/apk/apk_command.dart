@@ -28,7 +28,6 @@ class ApkCommand extends Command {
   @override
   void run() async {
     CucumberHelper.removeNdjsonGherkin();
-    await GitsModularHelper.format();
     final argTarget = argResults.getOptionTarget();
     final argFlavor = argResults.getOptionFlavor(defaultTo: Constants.stag);
     final argGitsYaml = argResults.getOptionGitsYaml();

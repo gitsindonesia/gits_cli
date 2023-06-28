@@ -30,7 +30,6 @@ class IpaCommand extends Command {
   @override
   void run() async {
     CucumberHelper.removeNdjsonGherkin();
-    await GitsModularHelper.format();
     final argTarget = argResults.getOptionTarget();
     final argFlavor = argResults.getOptionFlavor(defaultTo: Constants.prod);
     final argGitsYaml = argResults.getOptionGitsYaml();
