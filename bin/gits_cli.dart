@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:gits_cli/build_app/build_command.dart';
+import 'package:gits_cli/build_app/prebuild_command.dart';
 import 'package:gits_cli/dependency_manager.dart';
 import 'package:gits_cli/generate/firebase/firebase_command.dart';
 import 'package:gits_cli/generate/generate.dart';
@@ -22,6 +23,7 @@ void main(List<String> arguments) {
         ..addCommand(LocalizationCommand())
         ..addCommand(ConfigCommand())
         ..addCommand(FirebaseCommand())
+        ..addCommand(PreBuildCommand())
         //* Project
         ..addCommand(GetCommand())
         ..addCommand(RunCommand())
@@ -51,7 +53,7 @@ void main(List<String> arguments) {
   try {
     final results = runner.argParser.parse(arguments);
     if (results.wasParsed('version')) {
-      print('Gits CLI 2.1.0');
+      print('Gits CLI 2.2.0');
       exit(0);
     }
   } catch (e) {

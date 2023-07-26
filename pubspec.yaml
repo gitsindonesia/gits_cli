@@ -2,7 +2,7 @@ name: gits_cli
 description: Get it simple command flutter with Gits CLI
 homepage: https://gits.id/
 repository: https://github.com/gitsindonesia/gits_cli
-version: 2.1.0
+version: 2.2.0
 
 environment:
   sdk: ">=2.19.0 <4.0.0"
