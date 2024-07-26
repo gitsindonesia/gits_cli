@@ -42,7 +42,7 @@ Gits CLI is dart command line interface for Gits Flutter Project.
 
 ## Requirement
 
-- Dart SDK 2.17 or latest version
+- Dart SDK 3.0.0 or latest version
 
 ## IDE Recommendation
 
