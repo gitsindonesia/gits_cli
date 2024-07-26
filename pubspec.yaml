@@ -8,7 +8,7 @@ environment:
   sdk: ">=2.19.0 <4.0.0"
 
 dependencies:
-  dcli: ^2.2.3
+  dcli: ^4.0.2
   args: ^2.4.2
   path: ^1.8.3
   yaml: ^3.1.2
