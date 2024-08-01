@@ -1,3 +1,9 @@
+# Changelog
+
+## 3.0.0
+
+- feat: gits_cli supports Flutter 3.22.3 and Dart 3.4.4
+
 ## 2.2.0
 
 - feat: add prebuild command for ios
