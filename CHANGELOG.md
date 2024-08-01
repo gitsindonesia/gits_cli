@@ -2,7 +2,7 @@
 
 ## 3.0.0
 
-- feat: gits_cli supports Flutter 3.22.3 and Dart 3.4.4
+- feat: support dart 3.4.4 and flutter 3.22.3
 
 ## 2.2.0
 
