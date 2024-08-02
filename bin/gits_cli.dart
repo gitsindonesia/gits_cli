@@ -52,8 +52,8 @@ void main(List<String> arguments) {
 
   try {
     final results = runner.argParser.parse(arguments);
-    if (results.wasParsed('version')) {
-      print('Gits CLI 2.2.0');
+    if (results.wasParsed('version') || results.wasParsed('v')) {
+      print('Gits CLI 3.0.0');
       exit(0);
     }
   } catch (e) {

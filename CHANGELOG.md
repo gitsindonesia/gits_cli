@@ -1,3 +1,9 @@
+# Changelog
+
+## 3.0.0
+
+- feat: support dart 3.4.4 and flutter 3.22.3
+
 ## 2.2.0
 
 - feat: add prebuild command for ios
